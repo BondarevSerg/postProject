@@ -119,7 +119,7 @@ public class PostMapperImpl implements PostMapper {
      * @param
      * @return
      */
-    private PostOffice  getPostOfficeByIndexPost(Long indexPost) {
+    private PostOffice getPostOfficeByIndexPost(Long indexPost) {
         if (indexPost != null) {
             var postOffice = repositoryPostOffice.findPostOfficeByIndexPost(indexPost);
 

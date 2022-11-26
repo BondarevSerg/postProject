@@ -25,7 +25,6 @@ public class PostalItemController {
     private final PostalItemService postalItemService;
 
 
-
     /**
      * Получение списка отправлеий
      *
@@ -49,6 +48,7 @@ public class PostalItemController {
 
     /**
      * создание почтового отрпавления
+     *
      * @param postalItemRequest
      * @param bindingResult
      * @return
@@ -77,7 +77,7 @@ public class PostalItemController {
      * @return
      */
     @DeleteMapping("/delete_item/{id}")
-    public ResponseEntity<HttpStatus> deletePostalItemById (@PathVariable("id") Long id) {
+    public ResponseEntity<HttpStatus> deletePostalItemById(@PathVariable("id") Long id) {
         postalItemService.deletePostalItem(id);
         return ResponseEntity.ok(HttpStatus.OK);
     }
@@ -90,8 +90,8 @@ public class PostalItemController {
      */
 
     @PutMapping
-    public ResponseEntity<PostalItemResponse>  updatePostalItem(@RequestBody PostalItemRequest postalItemRequest) {
-        return new ResponseEntity<> (postalItemService.updatePostalItem(postalItemRequest), HttpStatus.OK);
+    public ResponseEntity<PostalItemResponse> updatePostalItem(@RequestBody PostalItemRequest postalItemRequest) {
+        return new ResponseEntity<>(postalItemService.updatePostalItem(postalItemRequest), HttpStatus.OK);
     }
 
 }

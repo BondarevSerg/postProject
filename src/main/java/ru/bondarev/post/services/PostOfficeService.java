@@ -32,6 +32,6 @@ public interface PostOfficeService {
     List<PostalItemResponse> getPostalItemsInByPostOffice(Long id);
 
 
-  List<PostalItemResponse> getPostalItemsOutByPostOffice(Long id);
+    List<PostalItemResponse> getPostalItemsOutByPostOffice(Long id);
 
 }
