@@ -40,16 +40,16 @@ public class PostOfficeController {
      * Получение отделения по идентификатору
      *
      * @param id идентификатор
-     *
      * @return отделение
      */
     @GetMapping("/{id}")
-    public PostOfficeResponse getPostOfficeById (@PathVariable("id") Long id) {
-       return postOfficeService.getPostOfficeById(id);
+    public PostOfficeResponse getPostOfficeById(@PathVariable("id") Long id) {
+        return postOfficeService.getPostOfficeById(id);
     }
 
     /**
      * Сохранение почтового отделения
+     *
      * @param postOfficeRequest
      * @param bindingResult
      * @return
@@ -74,37 +74,37 @@ public class PostOfficeController {
     /**
      * удаление почтового отделения по ID
      * если в нем нет отправлений
+     *
      * @param id
      * @return
      */
     @DeleteMapping("/delete_office/{id}")
-    public ResponseEntity<HttpStatus> deletePostOfficeById (@PathVariable("id") Long id) {
+    public ResponseEntity<HttpStatus> deletePostOfficeById(@PathVariable("id") Long id) {
         postOfficeService.deletePostOffice(id);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
     /**
      * получение списка входящих отправлений отделения
+     *
      * @param id
      * @return
      */
     @GetMapping("/itemsIn/{id}")
-    public List<PostalItemResponse> getPostalItemsByPostOfficeId (@PathVariable("id") Long id) {
+    public List<PostalItemResponse> getPostalItemsByPostOfficeId(@PathVariable("id") Long id) {
         return postOfficeService.getPostalItemsInByPostOffice(id);
     }
 
     /**
      * получение списка исходящих отправлений отделения
+     *
      * @param id
      * @return
      */
     @GetMapping("/itemsOut/{id}")
-    public List<PostalItemResponse> getPostalItemsByPostOfficeOut (@PathVariable("id") Long id) {
+    public List<PostalItemResponse> getPostalItemsByPostOfficeOut(@PathVariable("id") Long id) {
         return postOfficeService.getPostalItemsOutByPostOffice(id);
     }
-
-
-
 
 
 }

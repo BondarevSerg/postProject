@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.List;
 
 /**
- *  Dto отделения для фронта
+ * Dto отделения для фронта
  */
 @Data
 @Builder

@@ -26,6 +26,7 @@ public class PostalItemServiceImpl implements PostalItemService {
 
     /**
      * Получение dto отправления по id
+     *
      * @param id идентификатор
      * @return
      */
@@ -38,6 +39,7 @@ public class PostalItemServiceImpl implements PostalItemService {
 
     /**
      * получение списка отправлений
+     *
      * @return
      */
     @Override
@@ -48,6 +50,7 @@ public class PostalItemServiceImpl implements PostalItemService {
 
     /**
      * сохранение отправления с фронта
+     *
      * @param postalItemRequest
      */
     @Override
@@ -58,6 +61,7 @@ public class PostalItemServiceImpl implements PostalItemService {
 
     /**
      * удаление отправления по id
+     *
      * @param id
      */
     @Override
@@ -70,13 +74,14 @@ public class PostalItemServiceImpl implements PostalItemService {
 
     /**
      * Изменение отправления
+     *
      * @param postalItemRequest с фронта
      * @return
      */
     @Override
     public PostalItemResponse updatePostalItem(PostalItemRequest postalItemRequest) {
         //нужна ли проверка такая есть отправление или нет?
-         repository.findById(postalItemRequest.getId())
+        repository.findById(postalItemRequest.getId())
                 .orElseThrow(() -> new RuntimeException("Не найдено почтовое отправлени"));
 
         repository.save(mapper.requestToEntity(postalItemRequest));

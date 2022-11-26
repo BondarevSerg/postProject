@@ -42,7 +42,7 @@ public class PostOfficeServiceImpl implements PostOfficeService {
 
     @Override
     @Transactional
-   public void savePostOffice(PostOfficeRequest postOfficeRequest) {
+    public void savePostOffice(PostOfficeRequest postOfficeRequest) {
 
         repository.save(mapper.requestToEntity(postOfficeRequest));
 
@@ -68,10 +68,10 @@ public class PostOfficeServiceImpl implements PostOfficeService {
     public List<PostalItemResponse> getPostalItemsInByPostOffice(Long id) {
         var postOffice = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Не найдено почтовое отделение по идентификатору: " + id));
-         List<PostalItem>postalItems = postOffice.getInPostalItems();
-         List<PostalItemResponse>postalItemResponses = new ArrayList<>();
-         for(PostalItem postalItem: postalItems)
-             postalItemResponses.add(mapper.entityToResponse(postalItem));
+        List<PostalItem> postalItems = postOffice.getInPostalItems();
+        List<PostalItemResponse> postalItemResponses = new ArrayList<>();
+        for (PostalItem postalItem : postalItems)
+            postalItemResponses.add(mapper.entityToResponse(postalItem));
 
 
         return postalItemResponses;
@@ -86,9 +86,9 @@ public class PostOfficeServiceImpl implements PostOfficeService {
     public List<PostalItemResponse> getPostalItemsOutByPostOffice(Long id) {
         var postOffice = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Не найдено почтовое отделение по идентификатору: " + id));
-        List<PostalItem>postalItems = postOffice.getOutPostalItems();
-        List<PostalItemResponse>postalItemResponses = new ArrayList<>();
-        for(PostalItem postalItem: postalItems)
+        List<PostalItem> postalItems = postOffice.getOutPostalItems();
+        List<PostalItemResponse> postalItemResponses = new ArrayList<>();
+        for (PostalItem postalItem : postalItems)
             postalItemResponses.add(mapper.entityToResponse(postalItem));
 
 
