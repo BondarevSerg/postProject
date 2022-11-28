@@ -24,7 +24,12 @@ public class PostOfficeServiceImpl implements PostOfficeService {
 
     private final PostMapper mapper;
 
-
+    /**
+     * Получение отделения по id
+     *
+     * @param id идентификатор
+     * @return
+     */
     @Override
     public PostOfficeResponse getPostOfficeById(Long id) {
 
@@ -34,12 +39,22 @@ public class PostOfficeServiceImpl implements PostOfficeService {
         return mapper.entityToResponse(postOffice);
     }
 
+    /**
+     * Получение списка отделений
+     *
+     * @return
+     */
     @Override
     public List<PostOfficeResponse> getAllPostOffices() {
         var postOffices = repository.findAll();
         return mapper.listPostOfficeToResponse(postOffices);
     }
 
+    /**
+     * сохранение нового отделения
+     *
+     * @param postOfficeRequest
+     */
     @Override
     @Transactional
     public void savePostOffice(PostOfficeRequest postOfficeRequest) {
@@ -48,6 +63,10 @@ public class PostOfficeServiceImpl implements PostOfficeService {
 
     }
 
+    /**
+     * удаление отделения
+     * @param id
+     */
     @Override
     @Transactional
     public void deletePostOffice(Long id) {
