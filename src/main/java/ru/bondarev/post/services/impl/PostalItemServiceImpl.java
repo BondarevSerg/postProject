@@ -20,7 +20,7 @@ public class PostalItemServiceImpl implements PostalItemService {
 
     private final PostalItemRepository repository;
 
-    private final PostOfficeRepository repositoryPostOffice;
+
 
     private final PostMapper mapper;
 
@@ -80,7 +80,7 @@ public class PostalItemServiceImpl implements PostalItemService {
      */
     @Override
     public PostalItemResponse updatePostalItem(PostalItemRequest postalItemRequest) {
-        //нужна ли проверка такая есть отправление или нет?
+
         repository.findById(postalItemRequest.getId())
                 .orElseThrow(() -> new RuntimeException("Не найдено почтовое отправлени"));
 

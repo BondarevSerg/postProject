@@ -4,8 +4,9 @@ import lombok.Data;
 import ru.bondarev.post.entity.PostOffice;
 
 /**
- * DTO c фронта
+ * Dto отправления с фронта
  */
+
 @Data
 public class PostalItemRequest {
 
