@@ -42,5 +42,13 @@ public interface PostalItemService {
      * @param postalItemRequest с фронта
      * @return
      */
-    PostalItemResponse updatePostalItem(PostalItemRequest postalItemRequest);
+
+    void updatePostalItem(Long id, PostalItemRequest postalItemRequest);
+
+
+    List<PostalItemResponse> getPostalItemsInByPostOfficeId(Long id);
+
+
+
+    List<PostalItemResponse> getPostalItemsOutByPostOfficeId(Long id);
 }

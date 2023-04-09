@@ -1,7 +1,7 @@
 package ru.bondarev.post.dto.request;
 
 import lombok.Data;
-import ru.bondarev.post.entity.PostOffice;
+
 
 /**
  * Dto отправления с фронта
@@ -10,18 +10,15 @@ import ru.bondarev.post.entity.PostOffice;
 @Data
 public class PostalItemRequest {
 
+
     /**
-     * id отправления
+     * Индекс отделения прибытия
      */
-    private long id;
+    private Long postOfficeInIndex;
     /**
-     * Индекс входящего отделения
+     * индекс  отделения отправления
      */
-    private long postOfficeInIndex;
-    /**
-     * индекс исходящего отделения
-     */
-    private long postOfficeOutIndex;
+    private Long postOfficeOutIndex;
     /**
      * Адрес получателя
      */

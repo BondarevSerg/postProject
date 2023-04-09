@@ -3,7 +3,7 @@ package ru.bondarev.post.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Optional;
+
 
 /**
  * Почтовое отправление
@@ -25,6 +25,19 @@ public class PostalItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
+    /**
+     * Адрес получателя
+     */
+    @Column(name = "person_address")
+    private String personAddress;
+
+    /**
+     * Имя получателя
+     */
+    @Column(name = "person_name")
+    private String personName;
+
     /**
      * Отделение прибытия
      */
@@ -39,17 +52,6 @@ public class PostalItem {
     @JoinColumn(name = "postal_office_out", referencedColumnName = "id")
     private PostOffice postOfficeOut;
 
-    /**
-     * Адрес получателя
-     */
-    @Column(name = "person_address")
-    private String personAddress;
-
-    /**
-     * Имя получателя
-     */
-    @Column(name = "person_name")
-    private String personName;
 
 
 }

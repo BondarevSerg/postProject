@@ -1,6 +1,0 @@
-CREATE TABLE post_office
-(
-    id  INT PRIMARY KEY AUTO_INCREMENT,
-    office_index INT NOT NULL UNIQUE,
-    city VARCHAR(150) NOT NULL
-);
