@@ -3,22 +3,18 @@ package ru.bondarev.post.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import ru.bondarev.post.dto.PostalItemResponse;
 import ru.bondarev.post.dto.request.PostalItemRequest;
-import ru.bondarev.post.entity.PostalItem;
 import ru.bondarev.post.services.PostalItemService;
 
-import javax.validation.Valid;
 import java.util.List;
 
 /**
  * Контроллер работы с отправлениями
  */
 @RestController
-@RequestMapping("/postal-item")
+@RequestMapping("/items")
 @RequiredArgsConstructor
 public class PostalItemController {
 
@@ -26,7 +22,7 @@ public class PostalItemController {
 
 
     /**
-     * Получение списка отправлеий
+     * Получение списка всех отправлеий
      *
      * @return список отправлений
      */
@@ -47,25 +43,36 @@ public class PostalItemController {
     }
 
     /**
+     * Получение всех входящих отправлений по почтовому индексу отделения
+     *
+     * @param indexPost
+     * @return список отправлений
+     */
+    @GetMapping("/oficceIn/{indexPost}")
+    public  List<PostalItemResponse> getPostalItemsInByPostOfficeId(@PathVariable("indexPost") Long indexPost) {
+        return postalItemService. getPostalItemsInByPostOfficeId(indexPost);
+    }
+
+    /**
+     * Получение всех исходящих отправлений  по почтовому индексу отделения
+     *
+     * @param indexPost
+     * @return список отправлений
+     */
+    @GetMapping("/oficceOut/{indexPost}")
+    public  List<PostalItemResponse> getPostalItemsOutByPostOfficeId(@PathVariable("indexPost") Long indexPost) {
+        return postalItemService. getPostalItemsOutByPostOfficeId(indexPost);
+    }
+
+    /**
      * создание почтового отрпавления
      *
      * @param postalItemRequest
-     * @param bindingResult
      * @return
      */
-    @PostMapping("/newpostal_item")
-    public ResponseEntity<HttpStatus> create(@RequestBody @Valid PostalItemRequest postalItemRequest,
-                                             BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            StringBuilder errorMsg = new StringBuilder();
-            List<FieldError> errors = bindingResult.getFieldErrors();
-            for (FieldError error : errors) {
-                errorMsg.append(error.getField())
-                        .append("-").append(error.getDefaultMessage())
-                        .append(";");
-            }
+    @PostMapping()
+    public ResponseEntity<HttpStatus> create(@RequestBody PostalItemRequest postalItemRequest) {
 
-        }
         postalItemService.savePostItem(postalItemRequest);
         return ResponseEntity.ok(HttpStatus.OK);
     }
@@ -76,22 +83,24 @@ public class PostalItemController {
      * @param id
      * @return
      */
-    @DeleteMapping("/delete_item/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deletePostalItemById(@PathVariable("id") Long id) {
         postalItemService.deletePostalItem(id);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
     /**
-     * внесение изменений в отправление
-     *
-     * @param postalItemRequest дто с фронта
+     * обновление отправления по id
+     * @param id
+     * @param postalItemRequest
      * @return
      */
 
-    @PutMapping
-    public ResponseEntity<PostalItemResponse> updatePostalItem(@RequestBody PostalItemRequest postalItemRequest) {
-        return new ResponseEntity<>(postalItemService.updatePostalItem(postalItemRequest), HttpStatus.OK);
+    @PutMapping("/{id}")
+    public ResponseEntity<HttpStatus> updatePostalItem (@PathVariable("id") Long id,
+                                                        @RequestBody  PostalItemRequest postalItemRequest) {
+        postalItemService.updatePostalItem(id, postalItemRequest);
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
 }

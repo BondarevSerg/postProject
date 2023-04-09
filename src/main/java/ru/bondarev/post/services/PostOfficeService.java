@@ -29,9 +29,9 @@ public interface PostOfficeService {
 
     void deletePostOffice(Long id);
 
-    List<PostalItemResponse> getPostalItemsInByPostOffice(Long id);
-
-
-    List<PostalItemResponse> getPostalItemsOutByPostOffice(Long id);
+//    List<PostalItemResponse> getPostalItemsInByPostOffice(Long id);
+//
+//
+//    List<PostalItemResponse> getPostalItemsOutByPostOffice(Long id);
 
 }

@@ -4,7 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 
 /**
- * Dto отправления для фронта
+ * Dto отправления
  */
 @Data
 @Builder
@@ -16,14 +16,14 @@ public class PostalItemResponse {
     private Long id;
 
     /**
-     * Индекс отделения куда отправлено
+     * Индекс входящего отделения
      */
-    private Long postalOfficeInIndex;
+    private Long postOfficeInIndex;
 
     /**
-     * Индекс отделения откуда отправлено
+     * Индекс исходящего отделения
      */
-    private Long postalOfficeOutIndex;
+    private Long postOfficeOutIndex;
 
     /**
      * Адресс отправителя
